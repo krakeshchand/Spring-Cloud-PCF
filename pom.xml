@@ -3,9 +3,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.khoubyari</groupId>
+	<groupId>Hexa_Training</groupId>
 	<artifactId>spring-boot-rest-example</artifactId>
-	<version>0.5.0</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<description>Example project demonstrating REST APIs implemented using Spring Boot, in-memory database, embedded Tomcat, Swagger, JsonPath, Hamcrest and MockMVC</description>
 
@@ -133,6 +133,38 @@
 					<addResources>false</addResources>
 				</configuration>
 			</plugin>
+			<plugin>
+			   <groupId>org.sonatype.plugins</groupId>
+			   <artifactId>nexus-staging-maven-plugin</artifactId>
+			   <version>1.3</version>
+			   <executions>
+			      <execution>
+				 <id>default-deploy</id>
+				 <phase>deploy</phase>
+				 <goals>
+				    <goal>deploy</goal>
+				 </goals>
+			      </execution>
+			   </executions>
+			   <configuration>
+			      <serverId>nexus</serverId>
+			      <nexusUrl>http://localhost:8181/</nexusUrl>
+			      <skipStaging>true</skipStaging>
+			   </configuration>
+			</plugin>
 		</plugins>
 	</build>
+	<distributionManagement>
+	   <repository>
+	      <id>nexus</id>
+	      <name>Releases</name>
+	      <url>http://localhost:8181/repository/Spring-Cloud-PCF-RELEASE/</url>
+	   </repository>
+	   <snapshotRepository>
+	      <id>nexus</id>
+      	      <name>Snapshots</name>
+	      <url>http://localhost:8181/repository/Spring-Cloud-PCF-SNAPSHOTS/</url>
+	   </snapshotRepository>
+	</distributionManagement>
+	
 </project>
