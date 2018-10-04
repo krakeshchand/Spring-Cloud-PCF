@@ -1,0 +1,9 @@
+---
+applications:
+- name: hexaware-spring-boot-rest-example
+  memory: 1024M
+  instances: 1
+  random-route: true
+  host: Hello_World_App
+  buildpack: https://github.com/cloudfoundry/java-buildpack
+  path: /target/spring-boot-rest-example-0.0.1-SNAPSHOT.war

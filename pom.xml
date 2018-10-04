@@ -157,20 +157,20 @@
 	          <artifactId>clover-maven-plugin</artifactId>
 	          <version>4.2.0</version>
 	          <executions>
-	          <execution>
-	            <phase>verify</phase>
-	            <goals>
-	              <!-- <goal>instrument</goal>
-	              <goal>check</goal> -->
-	              <goal>clover</goal>
-	            </goals>
-	          </execution>
+		          <execution>
+		            <phase>verify</phase>
+		            <goals>
+		              <goal>instrument</goal>
+		              <goal>check</goal>
+		              <goal>clover</goal>
+		            </goals>
+		          </execution>
 	        </executions>
 	        <configuration>
 			  <generatePdf>true</generatePdf>
 			  <generateXml>true</generateXml>
-			  <generateHtml>false</generateHtml>
-			  <generateJson>false</generateJson> 
+			  <!-- <generateHtml>false</generateHtml>
+			  <generateJson>false</generateJson> --> 
 			</configuration>
 	        </plugin>
 	        <plugin>
@@ -179,12 +179,12 @@
                 <version>1.0.0.M1</version>
                 <configuration>
                     <server>mycloudfoundry-instance</server>
-                    <target>https://api.run.pivotal.io</target>
+                    <target>https://api.run.pivotal.io/v2/apps/</target>
                     <org>RakeshKumar-Org</org>
                     <space>development</space>
                     <app-name>hexaware-spring-boot-rest-example</app-name>
                     <url>hexaware.springexample.com</url>
-                    <memory>800</memory>
+                    <memory>1024</memory>
                     <instances>1</instances>
                     <buildpack>https://github.com/cloudfoundry/java-buildpack</buildpack>
                 </configuration>
