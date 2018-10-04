@@ -152,6 +152,43 @@
 			      <skipStaging>true</skipStaging>
 			   </configuration>
 			</plugin>
+			<plugin>
+	          <groupId>org.openclover</groupId>
+	          <artifactId>clover-maven-plugin</artifactId>
+	          <version>4.2.0</version>
+	          <executions>
+	          <execution>
+	            <phase>verify</phase>
+	            <goals>
+	              <!-- <goal>instrument</goal>
+	              <goal>check</goal> -->
+	              <goal>clover</goal>
+	            </goals>
+	          </execution>
+	        </executions>
+	        <configuration>
+			  <generatePdf>true</generatePdf>
+			  <generateXml>true</generateXml>
+			  <generateHtml>false</generateHtml>
+			  <generateJson>false</generateJson> 
+			</configuration>
+	        </plugin>
+	        <plugin>
+                <groupId>org.cloudfoundry</groupId>
+                <artifactId>cf-maven-plugin</artifactId>
+                <version>1.0.0.M1</version>
+                <configuration>
+                    <server>mycloudfoundry-instance</server>
+                    <target>https://api.run.pivotal.io</target>
+                    <org>RakeshKumar-Org</org>
+                    <space>development</space>
+                    <app-name>hexaware-spring-boot-rest-example</app-name>
+                    <url>hexaware.springexample.com</url>
+                    <memory>800</memory>
+                    <instances>1</instances>
+                    <buildpack>https://github.com/cloudfoundry/java-buildpack</buildpack>
+                </configuration>
+            </plugin>
 		</plugins>
 	</build>
 	<distributionManagement>
@@ -166,5 +203,11 @@
 	      <url>http://localhost:8181/repository/Spring-Cloud-PCF-SNAPSHOTS/</url>
 	   </snapshotRepository>
 	</distributionManagement>
-	
+	<pluginRepositories>
+		<pluginRepository>
+		    <id>repository.springframework.maven.milestone</id>
+		    <name>Spring Framework Maven Milestone Repository</name>
+		    <url>http://maven.springframework.org/milestone</url>
+		</pluginRepository>
+	</pluginRepositories>
 </project>
